@@ -21,40 +21,45 @@ function scan_wifi {
 }
 
 #unencryptor button
-$scan = New-Object System.Windows.Forms.Button
-$scan.Location = New-Object System.Drawing.Point(270,17)
-$scan.Size = New-Object System.Drawing.Size(170,20)
-$scan.Text = "Pokaż hasło sieci WiFi"
-$scan.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$form.Controls.Add($scan)
+$password = New-Object System.Windows.Forms.Button
+$password.Location = New-Object System.Drawing.Point(270,17)
+$password.Size = New-Object System.Drawing.Size(170,20)
+$password.Text = "Pokaż hasło sieci WiFi"
+$password.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$form.Controls.Add($password)
+$password.Add_Click({pass})
+function pass {
+
+    if ([string]::ISNullOrWhiteSpace($tb.Text)){
+    [System.Windows.MessageBox]::Show("Wpisz nazwę sieci!")
+    }else{
+        ($rs -eq [System.Windows.Forms.DialogResult]::OK)
+            $y = $tb.Text #input wifi name
+                $hack = netsh wlan show profile $y key=clear | Select-Object -Skip 32 -First 1 | Out-String
+                #unencryptor wifi password
+                [System.Windows.MessageBox]::Show("$hack")
+    }
+}
 
 #input
 $name = New-Object System.Windows.Forms.Label
-$name.Location = New-Object System.Drawing.Point(150,60)
-$name.Size = New-Object System.Drawing.Size(250,20)
-$name.Text = "Wpisz nazwę sieci WiFi..."
+$name.Location = New-Object System.Drawing.Point(110,60)
+$name.Size = New-Object System.Drawing.Size(300,20)
+$name.Text = "Wpisz początek nazwy sieci WiFi (np. TP*)"
 $form.Controls.Add($name)
 
 #input frame
 $tb = New-Object System.Windows.Forms.TextBox
-$tb.Location = New-Object System.Drawing.Point(135,85)
+$tb.Location = New-Object System.Drawing.Point(150,85)
 $tb.Size = New-Object System.Drawing.Size(200)
 $form.Controls.Add($tb)
 $form.Topmost = $true
 $form.Add_Shown({$tb.Select()})
 $rs = $form.ShowDialog()
 
-if ($rs -eq [System.Windows.Forms.DialogResult]::OK)
-{
-$y = $tb.Text #input wifi name
-    $hack = netsh wlan show profile $y key=clear | Select-Object -Skip 32 -First 1 | Out-String
-    #unencryptor wifi password
-    [System.Windows.MessageBox]::Show("$hack")
-}
-
 #do not exit after seeing password
 $result = $form.ShowDialog()
-if ($result -eq [System.Windows.Forms.DialogResult]::OK)
+if ($result -eq [System.Windows.Forms.DialogResult]::Cancel)
 {
     $x = $listBox.SelectedItems
     $x
