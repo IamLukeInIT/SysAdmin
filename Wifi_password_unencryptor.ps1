@@ -29,7 +29,7 @@ $password.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $form.Controls.Add($password)
 $password.Add_Click({pass})
 function pass {
-
+    #if empty show error message 
     if ([string]::ISNullOrWhiteSpace($tb.Text)){
     [System.Windows.MessageBox]::Show("Wpisz nazwę sieci!")
     }else{
@@ -38,6 +38,7 @@ function pass {
                 $hack = netsh wlan show profile $y key=clear | Select-Object -Skip 32 -First 1 | Out-String
                 #unencryptor wifi password
                 [System.Windows.MessageBox]::Show("$hack")
+                
     }
 }
 
