@@ -8,6 +8,8 @@ $form = New-Object System.Windows.Forms.Form
 $form.Text = $version
 $form.Size = New-Object System.Drawing.Size(300,500)
 $form.StartPosition = 'CenterScreen'
+$form.BackColor = '#081c15'
+$form.ForeColor = '#ffff3f'
 
 $label = New-Object System.Windows.Forms.Label
 $label.Location = New-Object System.Drawing.Point(94,25)#left, top
@@ -49,7 +51,7 @@ function Turnoff_Syriusz{
 $Platnik = New-Object System.Windows.Forms.Button
 $Platnik.Location = New-Object System.Drawing.Point(85,140)
 $Platnik.Size = New-Object System.Drawing.Size(115,23)
-$Platnik.Text = 'P³atnik'
+$Platnik.Text = 'PÂ³atnik'
 $form.Controls.Add($Platnik)
 $Platnik.Add_Click({ Turnoff_Platnik })
 function Turnoff_Platnik{
@@ -89,7 +91,7 @@ $Ethernet.Size = New-Object System.Drawing.Size(115,23)
 $Ethernet.Text = 'Restart sieci'
 $form.Controls.Add($Ethernet)
 $Ethernet.Add_Click({ Restart_ET })
-$card = "Po³¹czenie lokalne"
+$card = "PoÂ³Â¹czenie lokalne"
 function Restart_ET{	
 netsh interface set interface "$card" Disable 
 netsh interface set interface "$card" Enable  
@@ -103,7 +105,7 @@ Select-Object -Unique -Expand User;
 $TEMP = New-Object System.Windows.Forms.Button
 $TEMP.Location = New-Object System.Drawing.Point(85,310)
 $TEMP.Size = New-Object System.Drawing.Size(115,23)
-$TEMP.Text = 'Usuñ pliki TEMP'
+$TEMP.Text = 'UsuÃ± pliki TEMP'
 $form.Controls.Add($TEMP)
 $TEMP.Add_Click({ TEMP })
 function TEMP{
@@ -141,7 +143,7 @@ function chat{
 $cancelButton = New-Object System.Windows.Forms.Button
 $cancelButton.Location = New-Object System.Drawing.Point(200,410)
 $cancelButton.Size = New-Object System.Drawing.Size(75,23)
-$cancelButton.Text = 'WyjdŸ'
+$cancelButton.Text = 'WyjdÅ¸'
 $cancelButton.DialogResult = [System.Windows.Forms.DialogResult]::Cancel
 $form.CancelButton = $cancelButton
 $form.Controls.Add($cancelButton)
@@ -153,12 +155,12 @@ $About.Text = 'O programie'
 $form.Controls.Add($About)
 $About.Add_Click({ About })
 function About{
-    [System.Windows.MessageBox]::Show( "Program Scyzoryk powsta³ w celu szybkiego rozwi¹zywania prostych i czêstych problemóww w codziennej pracy.
+    [System.Windows.MessageBox]::Show( "Program Scyzoryk powstaÂ³ w celu szybkiego rozwiÂ¹zywania prostych i czÃªstych problemÃ³ww w codziennej pracy.
 
-Wersja 1.0.4: dodano opcjê resetowania nowej wersji SyriuszSTD.
-Wersja 1.0.3: dodano opcjê naprawy ANetChat.
-Wersja 1.0.2: dodano opcjê aktualizacji programu.
-Wersja 1.0.1: dodano opcjê restartowania aplikacji P³atnik, zak³adki Linki oraz Konta.","O porgramie", "OK", "Information")
+Wersja 1.0.4: dodano opcjÃª resetowania nowej wersji SyriuszSTD.
+Wersja 1.0.3: dodano opcjÃª naprawy ANetChat.
+Wersja 1.0.2: dodano opcjÃª aktualizacji programu.
+Wersja 1.0.1: dodano opcjÃª restartowania aplikacji PÂ³atnik, zakÂ³adki Linki oraz Konta.","O porgramie", "OK", "Information")
 }
 
 # top banner
@@ -173,9 +175,9 @@ function Links{
 	
 - 192.168.1.13:8080 - SyriuszSTD
 - 192.168.1.20:8181 - Intranet
-- www.pdf2doc.com - zamiana plikóww pdf na word
+- www.pdf2doc.com - zamiana plikÃ³ww pdf na word
 
-# Wpisz je w pasek wyszukiwania w swojej przegl¹darce."
+# Wpisz je w pasek wyszukiwania w swojej przeglÂ¹darce."
 ,"Przydatne linki", "OK", "Asterisk") 
 }
 
@@ -187,16 +189,16 @@ $form.Controls.Add($PUP)
 $PUP.Add_Click({ PUP })
 function PUP{
     [System.Windows.MessageBox]::Show( "Zapisuj swoje dokumenty na dysku D swojego komputera 
-w celu zapobiegniêcia ich ca³kowitemu usuniêciu.
+w celu zapobiegniÃªcia ich caÂ³kowitemu usuniÃªciu.
 	
-Login do stacji roboczej: Login zawsze sk³ada siê z Twojego nazwiska i imienia, bez polskich znaków, rozdzielonymi kropk¹.
-Przyk³ad: kowalski.jan
+Login do stacji roboczej: Login zawsze skÂ³ada siÃª z Twojego nazwiska i imienia, bez polskich znakÃ³w, rozdzielonymi kropkÂ¹.
+PrzykÂ³ad: kowalski.jan
 
-Login do SyriuszSTD: Login sk³ada siê z trzech pierwszych liter Twojego imienia i nazwiska oraz czterech losowo wybranych cyfr. Login i has³o nadawane jst przez system Broker i podane na Twojego maila podanego przy tworzeniu konta.
-Przyk³ad: jankow1234
+Login do SyriuszSTD: Login skÂ³ada siÃª z trzech pierwszych liter Twojego imienia i nazwiska oraz czterech losowo wybranych cyfr. Login i hasÂ³o nadawane jst przez system Broker i podane na Twojego maila podanego przy tworzeniu konta.
+PrzykÂ³ad: jankow1234
 
-Has³a do domeny jak i aplikacji SyriuszSTD musz¹ sk³adaæ siê
-z minimum oœmiu znaków, maa³ej i du¿ej litery, cyfry oraz znaku specjalnego. Has³o zmieniane jest co 30 dni i nie mo¿e powtarzaæ siê w przeci¹gu 12 miesiêcy."
+HasÂ³a do domeny jak i aplikacji SyriuszSTD muszÂ¹ skÂ³adaÃ¦ siÃª
+z minimum oÅ“miu znakÃ³w, maaÂ³ej i duÂ¿ej litery, cyfry oraz znaku specjalnego. HasÂ³o zmieniane jest co 30 dni i nie moÂ¿e powtarzaÃ¦ siÃª w przeciÂ¹gu 12 miesiÃªcy."
 ,"Informacje o kontach", "OK", "Asterisk") 
 }
 
@@ -208,7 +210,7 @@ $form.Controls.Add($akt)
 $akt.Add_Click({ akt })
 function akt {
     if (Test-Path -Path \\192.168.1.33\HelpDesk\skrypty\Scyzoryk\version_104.txt){
-        [System.Windows.MessageBox]::Show("Posiadasz aktualn¹ wersjê programu Scyzoryk.","Wersja", "OK","Information")
+        [System.Windows.MessageBox]::Show("Posiadasz aktualnÂ¹ wersjÃª programu Scyzoryk.","Wersja", "OK","Information")
     }else{
     Start-Process powershell "\\ryjek\HelpDesk\skrypty\Scyzoryk\Scyzoryk_update.ps1"
     }
@@ -217,7 +219,7 @@ function akt {
 $credits = New-Object System.Windows.Forms.Label
 $credits.Location = New-Object System.Drawing.Point(60,440)
 $credits.Size = New-Object System.Drawing.Size(280,20)
-$credits.Text = 'Copyright 2021 £ukasz Jedynak'
+$credits.Text = 'Copyright 2021 Â£ukasz Jedynak'
 $form.Controls.Add($credits)
 
 $result = $form.ShowDialog()
