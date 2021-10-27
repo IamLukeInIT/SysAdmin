@@ -38,7 +38,7 @@ dpkg -i zabbix-release_5.4-1+debian11_all.deb
 apt update
 echo '$(tput setaf 6)##########################################'
 
-echo '$(tput setaf 3)Installing Zabbix server, frontend adn agemt packages'
+echo '$(tput setaf 3)Installing Zabbix server, frontend and agemt packages'
 sudo apt -y install zabbix-server-mysql zabbix-frontend-php zabbix-agent
 echo '$(tput setaf 6)##########################################'
 
