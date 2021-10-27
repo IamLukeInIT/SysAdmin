@@ -48,13 +48,13 @@ zcat /usr/share/doc/zabbix-server-mysql/create.sql.gz | mysql -u zabbix -p zabbi
 echo '$(tput setaf 6)##########################################'
 
 echo '$(tput setaf 3)Database settings'
-sudo nano /etc/Zabbix/Zabbix
 echo "$(tput setaf 1)Uncomment or change these lines"
 echo "$(tput setaf 1)########"
 echo "$(tput setaf 1)DBHost=localhost"
 echo "$(tput setaf 1)DBName=zabbix"
 echo "$(tput setaf 1)DBUser=zabbix"
-DBPassword=admin@monit1
+echo "$(tput setaf 1)DBPassword=admin@monit1"
+sudo nano /etc/Zabbix/Zabbix
 echo '$(tput setaf 6)##########################################'
 
 systemctl restart apache2
