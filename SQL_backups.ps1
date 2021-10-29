@@ -2,6 +2,8 @@
 #Find the Service in the list called: SQL Server (MSSQLSERVER) look for the "Log On As" column (need to add user from AD if it doesn't exist in the list).
 #Restart Service SQL Server (MSSQLSERVER)
 
+#Install-Module -Name SqlServer on server
+
 $destinationPath = '#'
 $serverName = '#'
 $databaseName = '#'
