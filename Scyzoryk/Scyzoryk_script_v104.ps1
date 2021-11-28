@@ -210,7 +210,7 @@ $form.Controls.Add($akt)
 $akt.Add_Click({ akt })
 function akt {
     if (Test-Path -Path \\192.168.1.33\HelpDesk\skrypty\Scyzoryk\version_104.txt){
-        [System.Windows.MessageBox]::Show("Posiadasz aktualną werssję programu Scyzoryk.","Wersja", "OK","Information")
+        [System.Windows.MessageBox]::Show("Posiadasz aktualną wersję programu Scyzoryk.","Wersja", "OK","Information")
     }else{
     Start-Process powershell "\\ryjek\HelpDesk\skrypty\Scyzoryk\Scyzoryk_update.ps1"
     }
