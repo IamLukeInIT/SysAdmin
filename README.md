@@ -1,2 +1,2 @@
 # SysAdmin
-Powershell and bash scripts for system administrator.
+Powershell and .bat scripts for system administrator.
