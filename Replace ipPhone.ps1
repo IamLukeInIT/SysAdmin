@@ -1,10 +1,10 @@
 $UserList = Import-Csv -Delimiter ';' -Path C:\plik.csv
 $UserList
 
-foreach ($U in $UserList) {
+ForEach ($U in $UserList) {
     $user = $U.Samaccountname
-    $ipphone = $U.$Phone
-    $otheripphone = $U.$otherIpPhone
+    $ipphone = $U.Phone
+    $otheripphone = $U.otherIpPhone
 
     Set-ADUSer -Identity $user -replace @{ipphone=$ipphone}
     Set-ADUSer -Identity $user -replace @{otheripphone=$otheripphone}
