@@ -1,0 +1,31 @@
+$disk = "#base.vhd"
+New-VHD -Path $disk -SizeBytes 20GB -Fixed
+Write-Host "
+Disk making complete"
+
+if (Test-Path "#base.vhd"){
+    Write-Host "Deploy virtual machine" -ForegroundColor Magenta
+    $vmname = "#"
+    $iso = "#.iso"
+
+    New-VM -Name $vmname -Path "#" -MemoryStartupBytes 2GB -Generation 1
+
+    $vm = Get-VM -Name $vmname 
+
+    Write-Host "Adding virtual disk to virtual machine" -ForegroundColor Magenta
+    $vm | Add-VMHardDiskDrive -Path $disk
+    Write-Host "Disk added
+    " -ForegroundColor Green
+
+    Write-Host "Adding dvd drive to virtual machine" -ForegroundColor Magenta
+    $vm | Add-VMDvdDrive 
+    Write-Host "DVD added
+    " -ForegroundColor Green
+
+    Write-Host "Adding iso file to virtual machine" -ForegroundColor Magenta
+    Set-VMDvdDrive -VMName $vmname -Path $iso -ControllerNumber 0 -ControllerLocation 1
+    Write-Host "ISO added
+    " -ForegroundColor Green
+
+    Start-VM -Name $vmname
+}
